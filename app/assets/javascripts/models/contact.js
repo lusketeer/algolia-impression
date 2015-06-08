@@ -8,7 +8,7 @@ AlgoliaImpression.Models.Contact = Backbone.Model.extend({
 
   update: function(attributes, options) {
     AlgoliaImpression.index.saveObject(this.attributes, function(err, content) {
-      console.log(content);
+      console.log(err, content);
     });
   }
 });

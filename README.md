@@ -1,4 +1,4 @@
-[algolia]:[https://www.algolia.com/]
+[algolia]: https://www.algolia.com/
 
 ## Algolia Impression
 

@@ -12,5 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require algoliasearch.jquery.min
+//= require bootstrap.min
+//= require underscore
+//= require backbone
+//= require jquery.serializejson.min
+//= require algolia_impression
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./utils
+//= require_tree ./views
+//= require_tree ./routers

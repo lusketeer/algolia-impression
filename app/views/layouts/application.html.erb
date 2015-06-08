@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>AlgoliaImpression</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>AlgoliaImpression</title>
+    <%= stylesheet_link_tag    'application' %>
+    <% if Rails.env.production? %>
+      <% api_key = "key=AIzaSyD52AI4gcDkYd90dEp-ER93yD2sxtIa7iI" %>
+    <% else %>
+      <% api_key = '' %>
+    <% end %>
+    <script src="https://maps.googleapis.com/maps/api/js?<%= api_key %>"></script>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
 </html>

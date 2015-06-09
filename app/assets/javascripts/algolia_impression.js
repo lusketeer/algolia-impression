@@ -6,6 +6,11 @@ window.AlgoliaImpression = {
   initialize: function() {
     var client = $.algolia.Client('LKTG08SGJT', '3faa658bc14a1feba5a24f9e5f9003f3');
     AlgoliaImpression.index = client.initIndex('contacts');
+    AlgoliaImpression.index.setSettings({'customRanking': ['desc(followers)']}, function(err) {
+      if (!err) {
+        console.log('success');
+      }
+    });
     // AlgoliaImpression.index.search('john', function searchDone(err, content) {
     //   var contacts = new AlgoliaImpression.Collections.Contacts(content.hits)
     //   console.log(content)

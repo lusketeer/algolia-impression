@@ -20,7 +20,7 @@ gem 'jbuilder', '~> 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'backbone-on-rails' # backbone, no need to say more
+gem 'backbone-on-rails', '~> 1.2.0.0' # backbone, no need to say more
 gem 'ejs' #embedded javascript for backbone templates
 # gem 'marked-rails' # markdown format for text
 # gem 'foundation-rails' # foundation css framework

@@ -22,6 +22,10 @@ AlgoliaImpression.Views.ContactsIndex = Backbone.CompositeView.extend({
     });
     this.addSubview(".contacts-list-container", contactsListView);
 
+    var mapsIndexView = new AlgoliaImpression.Views.MapsIndex();
+    this.addSubview(".map", mapsIndexView);
+    mapsIndexView.initMap();
+
     return this;
   },
 

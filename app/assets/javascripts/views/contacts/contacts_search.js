@@ -11,13 +11,15 @@ AlgoliaImpression.Views.ContactsSearch = Backbone.View.extend({
     return this;
   },
 
+  // event triggered when keyup in search bar
   searchResponse: function(event) {
     event.preventDefault();
     var searchContent = $("input.contacts-search-box").val();
     AlgoliaImpression.index.search(searchContent, function searchDone(err, content) {
+      // reset collection content to the new result based on input
       this.collection.set(content.hits);
       // this.collection.reset(content.hits);
-      console.log(content.hits.length);
+      // console.log(content.hits.length);
     }.bind(this))
   }
 });

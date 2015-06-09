@@ -1,9 +1,12 @@
-<a href="javascript:void(0)">
-  <%= contact.escape("firstname") %> <%= contact.escape("lastname") %> (Followers: <%= contact.escape("followers") %>)
+<a href="javascript:void(0)" class="list-group-item">
+  <h4 class="list-group-item-heading">
+    <%= contact.escape("firstname") %> <%= contact.escape("lastname") %>
+    <span class="badge pull-right">
+      <%= contact.escape("followers") %>
+    </span>
+  </h4>
+  <p class="list-group-item-text">
+    <%= contact.escape("address") %>
+    <%= contact.escape("city") %>, <%= contact.escape("state") %>
+  </p>
 </a>
-<p>
-  <%= contact.escape("address") %>
-</p>
-<p>
-  <%= contact.escape("city") %>, <%= contact.escape("state") %>
-</p>

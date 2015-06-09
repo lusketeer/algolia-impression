@@ -7,6 +7,11 @@ html, body, #content {
   margin: 0;
   padding: 0;
 }
+
+#content > div {
+  height: 100%;
+}
+
 .sidebar-left {
   width: 25%;
   min-width: 270px;
@@ -14,6 +19,8 @@ html, body, #content {
   position: absolute;
   top: 0;
   left: 0;
+  overflow: auto;
+  padding: 5px;
 
   .logo {
     text-align: center;
@@ -30,4 +37,8 @@ html, body, #content {
   right: 0;
   width: 75%;
   height: 100%;
+
+  #map-canvas {
+    height: 100%;
+  }
 }

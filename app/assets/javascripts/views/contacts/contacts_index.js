@@ -1,4 +1,4 @@
-AlgoliaImpression.Views.ContactsIndex = Backbone.View.extend({
+AlgoliaImpression.Views.ContactsIndex = Backbone.CompositeView.extend({
 
   template: JST['contacts/index'],
 

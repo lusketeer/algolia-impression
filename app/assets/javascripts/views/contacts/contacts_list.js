@@ -4,7 +4,7 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
   initialize: function() {
     // refresh view when collection changes
     // make it more efficient when figure out .reset problem
-    this.listenTo(this.collection, "reset", this.render);
+    this.listenTo(this.collection, "reset add remove", this.render);
   },
 
   render: function() {

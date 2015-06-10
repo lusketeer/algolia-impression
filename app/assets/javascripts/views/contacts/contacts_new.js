@@ -7,7 +7,9 @@ AlgoliaImpression.Views.ContactsNew = Backbone.View.extend({
   },
 
   initialize: function(options) {
-    this.mapView = options.mapView;
+    if (options) {
+      this.mapView = options.mapView;
+    }
     this.model = new AlgoliaImpression.Models.Contact();
   },
 
@@ -16,6 +18,8 @@ AlgoliaImpression.Views.ContactsNew = Backbone.View.extend({
       contact: this.model
     });
     this.$el.html(content);
+    this.$("h4.modal-title").html("New Contact");
+    this.$("button.submit").html("Create Contact");
 
     return this;
   },

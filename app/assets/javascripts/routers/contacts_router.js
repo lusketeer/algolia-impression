@@ -17,19 +17,21 @@ AlgoliaImpression.Routers.Contacts = Backbone.Router.extend({
         aroundRadius: 10000 // 10km around
       },
       function searchDone(err, content) {
-        if (content.hits.length !== 0) {
+        debugger
+        if (content && content.hits.length !== 0) {
           // set result to collection's models
           this.collection.set(content.hits);
-          var contactsIndexView = new AlgoliaImpression.Views.ContactsIndex({
-            collection: this.collection
-          });
 
           // rendering the view
-          this._swapView(contactsIndexView);
 
         } else {
           console.log(err);
+          this.collection.set([]);
         }
+        var contactsIndexView = new AlgoliaImpression.Views.ContactsIndex({
+          collection: this.collection
+        });
+        this._swapView(contactsIndexView);
       }.bind(this)
     );
   }

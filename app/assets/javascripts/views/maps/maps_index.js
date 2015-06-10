@@ -35,6 +35,7 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
     google.maps.event.addListener(this._map, 'idle', this.search.bind(this));
   },
 
+  // Use current map boundary to search for contacts that exist within the current map view
   search: function() {
     // Get map boundary
     var mapBounds = this._map.getBounds();
@@ -63,6 +64,7 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
     );
   },
 
+  // Add marker to global markers hash and place it on the map
   placeMarker: function(contact) {
     // avoid duplications
     if (AlgoliaImpression._markers[contact.get("objectID")]) { return };
@@ -84,6 +86,7 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
     AlgoliaImpression._markers[contact.get("objectID")] = marker;
   },
 
+  // Show marker information when clicked
   showMarkerInfo: function(event, marker) {
    var contentString = "<strong>" + marker.title + "</strong>";
    var infoWindow = new google.maps.InfoWindow({
@@ -93,6 +96,7 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
     infoWindow.open(this._map, marker);
   },
 
+  // remove marker from the map and global markers hash
   removeMarker: function (contact) {
     var marker = AlgoliaImpression._markers[contact.get("objectID")];
     marker.setMap(null);

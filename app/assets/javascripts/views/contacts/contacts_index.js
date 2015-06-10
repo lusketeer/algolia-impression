@@ -2,6 +2,10 @@ AlgoliaImpression.Views.ContactsIndex = Backbone.CompositeView.extend({
 
   template: JST['contacts/index'],
 
+  events: {
+    "click button.new-contact": "populateNewContactView"
+  },
+
   initialize: function() {
     // this.listenTo(this.collection, "remove", this.doSomething);
   },
@@ -9,9 +13,6 @@ AlgoliaImpression.Views.ContactsIndex = Backbone.CompositeView.extend({
   render: function() {
     var content = this.template();
     this.$el.html(content);
-
-    var contactsNewView = new AlgoliaImpression.Views.ContactsNew();
-    this.addSubview(".temp", contactsNewView);
 
     // // contact search view
     // var contactsSearchView = new AlgoliaImpression.Views.ContactsSearch({
@@ -34,6 +35,12 @@ AlgoliaImpression.Views.ContactsIndex = Backbone.CompositeView.extend({
     // this.addSubview(".contacts-list-container", contactsListView);
 
     return this;
+  },
+
+  populateNewContactView: function(event) {
+    $("#contact_modal").html("");
+    var contactsNewView = new AlgoliaImpression.Views.ContactsNew();
+    this.addSubview("#contact_modal", contactsNewView);
   },
 
   doSomething: function() {

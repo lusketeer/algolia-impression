@@ -15,5 +15,9 @@ AlgoliaImpression.Models.Contact = Backbone.Model.extend({
     AlgoliaImpression.index.saveObject(this.attributes, function(err, content) {
       console.log(err, content);
     });
+  },
+
+  getFullAddress: function() {
+    return this.escape("address") + ", " + this.escape("city") + ", " + this.escape("state") + ", " + this.escape("zip").toString();
   }
 });

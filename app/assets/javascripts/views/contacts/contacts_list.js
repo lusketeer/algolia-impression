@@ -1,10 +1,16 @@
 AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
   template: JST["contacts/list"],
 
-  initialize: function() {
+  events: {
+    // "mouseenter .contact": "startBounce",
+    // "mouseleave .contact": "stopBounce"
+  },
+
+  initialize: function(options) {
     // refresh view when collection changes
     // make it more efficient when figure out .reset problem
     this.listenTo(this.collection, "reset add remove", this.render);
+    this.mapView = options.mapView;
   },
 
   render: function() {
@@ -12,10 +18,28 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.collection.each(function(contact) {
       var contactsListItemView = new AlgoliaImpression.Views.ContactsListItem({
-        model: contact
+        model   : contact,
+        mapView : this.mapView
       });
       this.addSubview(".contacts-list", contactsListItemView);
     }, this)
     return this;
+  },
+
+  // initiating bouncing animation for the hovered marker
+  startBounce: function(event) {
+    var id = $(event.currentTarget).data('id');
+    this.mapView.startBounce(id);
+    console.log("enter");
+  },
+
+  // terminating bouncing animation when mouse exits the contact
+  stopBonuce: function(event) {
+    debugger
+    var id = $(event.currentTarget).data('id');
+    this.mapView.stopBounce(id);
+    console.log("leave");
   }
+
+
 });

@@ -1,10 +1,13 @@
 <a href="javascript:void(0)" class="list-group-item contact">
   <h4 class="list-group-item-heading">
-    <%= contact.escape("firstname") %> <%= contact.escape("lastname") %>
+    <%= contact.escape("company") %>
     <span class="badge pull-right">
       <%= contact.escape("followers") %>
     </span>
   </h4>
+  <p>
+    <%= contact.escape("firstname") %> <%= contact.escape("lastname") %>
+  </p>
   <p class="list-group-item-text">
     <%= contact.escape("address") %>
     <%= contact.escape("city") %>, <%= contact.escape("state") %>

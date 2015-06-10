@@ -11,7 +11,11 @@ AlgoliaImpression.Routers.Contacts = Backbone.Router.extend({
 
   contactsIndex: function() {
     // populate contacts collection upon initializing index view
-    AlgoliaImpression.index.search("",
+    // Default to San Francisco
+    AlgoliaImpression.index.search({
+        aroundLatLng: '37.7833,-122.4167',
+        aroundRadius: 10000 // 10km around
+      },
       function searchDone(err, content) {
         if (content.hits.length !== 0) {
           // set result to collection's models

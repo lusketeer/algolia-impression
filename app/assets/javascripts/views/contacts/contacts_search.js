@@ -17,8 +17,8 @@ AlgoliaImpression.Views.ContactsSearch = Backbone.View.extend({
     var searchContent = $("input.contacts-search-box").val();
     AlgoliaImpression.index.search(searchContent, function searchDone(err, content) {
       // reset collection content to the new result based on input
-      this.collection.set(content.hits);
-      // this.collection.reset(content.hits);
+      // this.collection.set(content.hits);
+      this.collection.reset(content.hits);
       // console.log(content.hits.length);
     }.bind(this))
   }

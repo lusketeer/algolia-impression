@@ -5,7 +5,8 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
   },
 
   initialize: function () {
-    this._markers = {};
+    AlgoliaImpression._markers = {};
+
     this.listenTo(this.collection, 'add', this.placeMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
   },
@@ -60,14 +61,11 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
         this.collection.set(content.hits);
       }.bind(this)
     );
-    this.collection.fetch({
-      data: { filter_data: filterData }
-    });
   },
 
   placeMarker: function(contact) {
     // avoid duplications
-    if (this._markers[contact.get("objectID")]) { return };
+    if (AlgoliaImpression._markers[contact.get("objectID")]) { return };
 
     // initialize marker with contact's geoloc
     var marker = new google.maps.Marker({
@@ -83,7 +81,7 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
     });
 
     // store to markers hash for deletion later
-    this._markers[contact.get("objectID")] = marker;
+    AlgoliaImpression._markers[contact.get("objectID")] = marker;
   },
 
   showMarkerInfo: function(event, marker) {
@@ -96,9 +94,19 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
   },
 
   removeMarker: function (contact) {
-    var marker = this._markers[contact.get("objectID")];
+    var marker = AlgoliaImpression._markers[contact.get("objectID")];
     marker.setMap(null);
-    delete this._markers[contact.get("objectID")];
+    delete AlgoliaImpression._markers[contact.get("objectID")];
   },
+
+  startBounce: function (id) {
+    var marker = AlgoliaImpression._markers[id];
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  },
+
+  stopBounce: function (id) {
+    var marker = AlgoliaImpression._markers[id];
+    marker.setAnimation(null);
+  }
 
 });

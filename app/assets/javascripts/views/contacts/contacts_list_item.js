@@ -24,7 +24,7 @@ AlgoliaImpression.Views.ContactsListItem = Backbone.View.extend({
     event.preventDefault();
     var marker = AlgoliaImpression._markers[this.model.get("objectID")];
     this.mapView._map.panTo(this.model.get("_geoloc"));
-    this.mapView._map.setZoom(15);
+    // this.mapView._map.setZoom(15);
     $("input.contacts-search-box").val("");
   },
 

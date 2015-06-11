@@ -104,26 +104,25 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
     var marker = AlgoliaImpression._markers[contact.get("objectID")];
     marker.setMap(null);
     delete AlgoliaImpression._markers[contact.get("objectID")];
-  },
-
-  toggleBounce: function(id) {
-    var marker = AlgoliaImpression._markers[id];
-
-    if (marker.getAnimation() != null) {
-      marker.setAnimation(null);
-    } else {
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-    }
-  },
-
-  startBounce: function (id) {
-    var marker = AlgoliaImpression._markers[id];
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  },
-
-  stopBounce: function (id) {
-    var marker = AlgoliaImpression._markers[id];
-    marker.setAnimation(null);
   }
 
+  // toggleBounce: function(id) {
+  //   var marker = AlgoliaImpression._markers[id];
+  //
+  //   if (marker.getAnimation() != null) {
+  //     marker.setAnimation(null);
+  //   } else {
+  //     marker.setAnimation(google.maps.Animation.BOUNCE);
+  //   }
+  // },
+  //
+  // startBounce: function (id) {
+  //   var marker = AlgoliaImpression._markers[id];
+  //   marker.setAnimation(google.maps.Animation.BOUNCE);
+  // },
+  //
+  // stopBounce: function (id) {
+  //   var marker = AlgoliaImpression._markers[id];
+  //   marker.setAnimation(null);
+  // }
 });

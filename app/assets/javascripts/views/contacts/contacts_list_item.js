@@ -21,6 +21,10 @@ AlgoliaImpression.Views.ContactsListItem = Backbone.View.extend({
   // Center map at clicked contact's location
   goToAddress: function(event) {
     event.preventDefault();
-    this.mapView.initMap(this.model.get("_geoloc"));
+    this.mapView._map.panTo(this.model.get("_geoloc"));
+    debugger
+    this.mapView.search();
+    console.log("move");
+    $("input.contacts-search-box").val("");
   }
 });

@@ -60,6 +60,7 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
         }
 
         this.collection.set(content.hits);
+        console.log("search")
       }.bind(this)
     );
   },
@@ -88,7 +89,9 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
 
   // Show marker information when clicked
   showMarkerInfo: function(event, marker) {
-   var contentString = "<strong>" + marker.title + "</strong>";
+   var contentTitle = "<strong>" + marker.title + "</strong>";
+  //  var contentBody = "<p>Phone: " + this._clickedContact.escape("phone") + "</p>";
+   var contentString = contentTitle;
    var infoWindow = new google.maps.InfoWindow({
       content: contentString
     });

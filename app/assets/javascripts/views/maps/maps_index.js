@@ -60,7 +60,6 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
         }
 
         this.collection.set(content.hits);
-        console.log("search")
       }.bind(this)
     );
   },
@@ -74,7 +73,8 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
     var marker = new google.maps.Marker({
       position: { lat: contact.get('_geoloc').lat, lng: contact.get('_geoloc').lng },
       map: this._map,
-      title: contact.get('company')
+      title: contact.get('company'),
+      animation: google.maps.Animation.DROP
     });
 
     var view = this;
@@ -104,6 +104,16 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
     var marker = AlgoliaImpression._markers[contact.get("objectID")];
     marker.setMap(null);
     delete AlgoliaImpression._markers[contact.get("objectID")];
+  },
+
+  toggleBounce: function(id) {
+    var marker = AlgoliaImpression._markers[id];
+
+    if (marker.getAnimation() != null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
   },
 
   startBounce: function (id) {

@@ -16,11 +16,9 @@ AlgoliaImpression.Views.ContactsSearch = Backbone.View.extend({
     event.preventDefault();
     var searchContent = $("input.contacts-search-box").val();
     AlgoliaImpression.index.search(searchContent, function searchDone(err, content) {
-      // reset collection content to the new result based on input
-      // this.collection.set(content.hits);
+      // set collection content to the new result based on input
+      // have to use set instead of reset in order to trigger 'add remove' for markers
       this.collection.set(content.hits);
-      console.log("input search");
-      // console.log(content.hits.length);
     }.bind(this))
   }
 });

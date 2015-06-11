@@ -4,6 +4,7 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
   events: {
     // "mouseenter .contact": "startBounce",
     // "mouseleave .contact": "stopBounce"
+    // "hover .contact": "toggleBounce"
   },
 
   initialize: function(options) {
@@ -26,6 +27,11 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
     return this;
   },
 
+  toggleBounce: function(event) {
+    var id = $(event.currentTarget).data('id');
+    this.mapView.toggleBounce(id);
+  },
+
   // initiating bouncing animation for the hovered marker
   startBounce: function(event) {
     var id = $(event.currentTarget).data('id');
@@ -35,7 +41,6 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
 
   // terminating bouncing animation when mouse exits the contact
   stopBonuce: function(event) {
-    debugger
     var id = $(event.currentTarget).data('id');
     this.mapView.stopBounce(id);
     console.log("leave");

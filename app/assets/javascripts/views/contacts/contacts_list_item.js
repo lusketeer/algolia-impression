@@ -2,7 +2,8 @@ AlgoliaImpression.Views.ContactsListItem = Backbone.View.extend({
   template: JST["contacts/list_item"],
 
   events: {
-    "click .contact": "goToAddress"
+    "click .contact"      : "goToAddress",
+    "mouseenter .contact" : "bounceOnce"
   },
 
   initialize: function(options) {
@@ -21,10 +22,15 @@ AlgoliaImpression.Views.ContactsListItem = Backbone.View.extend({
   // Center map at clicked contact's location
   goToAddress: function(event) {
     event.preventDefault();
+    var marker = AlgoliaImpression._markers[this.model.get("objectID")];
     this.mapView._map.panTo(this.model.get("_geoloc"));
-    debugger
-    this.mapView.search();
-    console.log("move");
+    this.mapView._map.setZoom(15);
     $("input.contacts-search-box").val("");
+  },
+
+  bounceOnce: function(event) {
+    var marker = AlgoliaImpression._markers[this.model.get("objectID")];
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function(){ marker.setAnimation(null); }, 750);
   }
 });

@@ -77,6 +77,10 @@ html, body, #content {
             z-index: 20;
             .delete-contact {
               visibility: visible;
+
+              &:hover {
+                color: #a94442;
+              }
             }
           }
         }

@@ -30,11 +30,11 @@ AlgoliaImpression.Views.ContactsNew = Backbone.View.extend({
     // get geo loc for the address
     debugger
     this.model.set(data.contact);
-    this.model.add(function() {
-      if (this.model.get("_geoloc")) {
-        // Re-center map to newly created contact
-        this.mapView.initMap(this.model.get("_geoloc"));
-      }
-    }.bind(this));
+    // this.model.add(function() {
+    //   if (this.model.get("_geoloc")) {
+    //     // Re-center map to newly created contact
+    //     this.mapView.initMap(this.model.get("_geoloc"));
+    //   }
+    // }.bind(this));
   }
 });

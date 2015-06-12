@@ -56,6 +56,7 @@ html, body, #content {
 
         .contact {
           position: relative;
+          width: 100%;
 
           .contact-followers {
             position: absolute;
@@ -73,6 +74,7 @@ html, body, #content {
           }
 
           &:hover {
+            z-index: 20;
             .delete-contact {
               visibility: visible;
             }

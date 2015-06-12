@@ -5,6 +5,7 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
     // "mouseenter .contact": "startBounce",
     // "mouseleave .contact": "stopBounce"
     // "hover .contact": "toggleBounce"
+    "click a.more-contacts": "loadAdditionalContacts"
   },
 
   initialize: function(options) {
@@ -28,23 +29,23 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
     return this;
   },
 
-  toggleBounce: function(event) {
-    var id = $(event.currentTarget).data('id');
-    this.mapView.toggleBounce(id);
-  },
-
-  // initiating bouncing animation for the hovered marker
-  startBounce: function(event) {
-    var id = $(event.currentTarget).data('id');
-    this.mapView.startBounce(id);
-    console.log("enter");
-  },
-
-  // terminating bouncing animation when mouse exits the contact
-  stopBonuce: function(event) {
-    var id = $(event.currentTarget).data('id');
-    this.mapView.stopBounce(id);
-    console.log("leave");
+  loadAdditionalContacts: function(event) {
+    event.preventDefault();
+    $(event.currentTarget).find("div").html("Loading...");
+    var nextPage = AlgoliaImpression.responseContent.page + 1;
+    var query = AlgoliaImpression.responseContent.query;
+    AlgoliaImpression.index.search(
+      query,
+      {
+        page: nextPage
+      },
+      function(err, content) {
+        if (!err) {
+          AlgoliaImpression.responseContent = content;
+          this.collection.add(content.hits);
+        }
+      }.bind(this)
+    )
   }
 
 

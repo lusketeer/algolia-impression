@@ -32,12 +32,9 @@ html, body, #content {
         margin-right: 0;
       }
     }
-    .logo {
-      text-align: center;
-    }
 
     .contacts-search {
-      padding-top: 70px;
+      padding-top: 51px;
       margin-bottom: 20px;
 
       input.contacts-search-box {
@@ -54,8 +51,46 @@ html, body, #content {
 
     div.panel-body {
       padding: 0;
+
+      .contacts-list {
+
+        .contact {
+          position: relative;
+
+          .contact-followers {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+          }
+
+          .delete-contact {
+            visibility: hidden;
+            font-size: 19px;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          &:hover {
+            .delete-contact {
+              visibility: visible;
+            }
+          }
+        }
+
+      }
+
+      a.more-contacts {
+        text-decoration: none;
+        div {
+          padding: 5px 15px;
+          text-align: center;
+        }
+      }
     }
   }
+
 }
 
 

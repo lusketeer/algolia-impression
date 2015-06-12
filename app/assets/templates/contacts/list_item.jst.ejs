@@ -1,7 +1,7 @@
 <a href="javascript:void(0)" class="list-group-item contact">
   <h4 class="list-group-item-heading">
     <%= contact.escape("company") %>
-    <span class="label label-info pull-right">
+    <span class="badge contact-followers">
       <%= contact.escape("followers") %>
     </span>
   </h4>
@@ -12,4 +12,5 @@
     <%= contact.escape("address") %>
     <%= contact.escape("city") %>, <%= contact.escape("state") %>
   </p>
+  <span class="glyphicon glyphicon-trash delete-contact"></span>
 </a>

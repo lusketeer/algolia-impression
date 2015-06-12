@@ -17,6 +17,7 @@ AlgoliaImpression.Routers.Contacts = Backbone.Router.extend({
         aroundRadius: 10000 // 10km around
       },
       function searchDone(err, content) {
+        AlgoliaImpression.responseContent = content;
         if (content && content.hits.length !== 0) {
           // set result to collection's models
           this.collection.set(content.hits);

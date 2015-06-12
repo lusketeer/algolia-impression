@@ -4,5 +4,12 @@
     </div>
     <div class="contacts-list list-group">
     </div>
+    <% if (AlgoliaImpression.responseContent.hits.length < AlgoliaImpression.responseContent.nbHits) {%>
+    <a href="javascript:void(0)" class="more-contacts">
+      <div>
+        Load More
+      </div>
+    </a>
+    <% } %>
   </div>
 </div>

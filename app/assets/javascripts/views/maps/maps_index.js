@@ -59,6 +59,7 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
           return;
         }
 
+        AlgoliaImpression.responseContent = content;
         this.collection.set(content.hits);
       }.bind(this)
     );

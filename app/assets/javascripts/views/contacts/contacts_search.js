@@ -22,12 +22,15 @@ AlgoliaImpression.Views.ContactsSearch = Backbone.View.extend({
     AlgoliaImpression.index.search(searchContent, function searchDone(err, content) {
       // set collection content to the new result based on input
       // have to use set instead of reset in order to trigger 'add remove' for markers
+      // make sure responseContent is updated before this.collection, so when listenTo is fired, responseContent is up-to-date
+      AlgoliaImpression.responseContent = content;
       this.collection.set(content.hits);
     }.bind(this))
   },
 
   updateSearchStatus: function() {
     this.$("span.contacts-list-showing-count").html(this.collection.size());
+    this.$("span.contacts-list-total-count").html(AlgoliaImpression.responseContent.nbHits)
     if (this.collection.size() === 0) {
       this.$(".search-status").removeClass("bg-success").addClass("bg-warning");
     } else {

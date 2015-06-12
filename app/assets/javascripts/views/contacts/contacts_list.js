@@ -38,12 +38,11 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
     // When user isn't searching
     if (query === "") {
       var params = AlgoliaImpression.responseContent.params;
-      var data = params.split("=")[1].split("%2C").join(",");
-      console.log(data);
+      var data = parseString(params);
       AlgoliaImpression.index.search(
         {
           page: nextPage,
-          insideBoundingBox: data
+          insideBoundingBox: data.insideBoundingBox.split("%2C").join(",")
         },
         function(err, content) {
           if (err) {

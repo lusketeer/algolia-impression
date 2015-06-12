@@ -44,10 +44,17 @@ html, body, #content {
         border-radius: 0;
       }
     }
+    p.search-status {
+      padding: 5px 15px;
+    }
   }
 
-  div.panel-body {
-    padding: 0;
+  div.panel-container {
+    border: 0;
+
+    div.panel-body {
+      padding: 0;
+    }
   }
 }
 

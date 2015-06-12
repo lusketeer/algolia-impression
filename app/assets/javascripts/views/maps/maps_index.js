@@ -74,7 +74,7 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
     var marker = new google.maps.Marker({
       position: { lat: contact.get('_geoloc').lat, lng: contact.get('_geoloc').lng },
       map: this._map,
-      title: contact.get('company'),
+      title: contact.get('objectID'),
       animation: google.maps.Animation.DROP
     });
 
@@ -90,10 +90,11 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
 
   // Show marker information when clicked
   showMarkerInfo: function(event, marker) {
-   var contentTitle = "<strong>" + marker.title + "</strong>";
-  //  var contentBody = "<p>Phone: " + this._clickedContact.escape("phone") + "</p>";
-   var contentString = contentTitle;
-   var infoWindow = new google.maps.InfoWindow({
+    var contact = this.collection.findWhere({ objectID: marker.title });
+    var contentTitle = "<strong>" + contact.escape("company") + "</strong>";
+     var contentBody = "<p>Phone: " + contact.escape("phone") + "</p>";
+    var contentString = contentTitle + contentBody;
+    var infoWindow = new google.maps.InfoWindow({
       content: contentString
     });
 

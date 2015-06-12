@@ -15,8 +15,8 @@ window.AlgoliaImpression = {
       },
 
       function(err) {
-        if (!err) {
-          console.log('success');
+        if (err) {
+          console.log(err);
         }
       }
     );

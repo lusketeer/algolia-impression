@@ -22,10 +22,10 @@ AlgoliaImpression.Views.ContactsListItem = Backbone.View.extend({
   // Center map at clicked contact's location
   goToAddress: function(event) {
     event.preventDefault();
+    $("input.contacts-search-box").val("");
     var marker = AlgoliaImpression._markers[this.model.get("objectID")];
     this.mapView._map.panTo(this.model.get("_geoloc"));
     // this.mapView._map.setZoom(15);
-    $("input.contacts-search-box").val("");
   },
 
   bounceOnce: function(event) {

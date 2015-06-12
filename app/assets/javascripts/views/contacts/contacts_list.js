@@ -34,16 +34,19 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
     $(event.currentTarget).find("div").html("Loading...");
     var nextPage = AlgoliaImpression.responseContent.page + 1;
     var query = AlgoliaImpression.responseContent.query;
+    var params = AlgoliaImpression.responseContent.params;
     AlgoliaImpression.index.search(
-      query,
       {
-        page: nextPage
+        page: nextPage,
+        params: params
       },
       function(err, content) {
-        if (!err) {
-          AlgoliaImpression.responseContent = content;
-          this.collection.add(content.hits);
+        if (err) {
+          console.log(err);
+          return;
         }
+        AlgoliaImpression.responseContent = content;
+        this.collection.add(content.hits);
       }.bind(this)
     )
   }

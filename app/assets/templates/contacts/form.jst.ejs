@@ -10,77 +10,96 @@
     <div class="modal-body">
       <form class="form contact-form">
 
-        <!-- Company -->
+        <!-- Contact Name -->
         <div class="form-group">
-          <label for="contact_company">Company</label>
-          <input id="contact_company" type="text" name="contact['company']" value="<%= contact.escape('company') %>" class="form-control">
+          <label for="contact_firstname">Contact Name</label>
+          <div class="row">
+            <!-- first name -->
+            <div class="col-md-6">
+              <input id="contact_firstname" type="text" name="contact['firstname']" value="<%= contact.escape('firstname') %>" class="form-control" placeholder="First Name">
+            </div>
+            <!-- last name -->
+            <div class="col-md-6">
+              <input id="contact_lastname" type="text" name="contact['lastname']" value="<%= contact.escape('lastname') %>" class="form-control" placeholder="Last Name">
+            </div>
+          </div>
+        </div>
+        <!-- end of Contact Name -->
+
+        <!-- Contact Info -->
+        <!-- phone and fax -->
+        <div class="form-group">
+          <label for="contact_phone">Contact Info</label>
+          <div class="row">
+            <!-- phone number -->
+            <div class="col-md-6">
+              <input id="contact_phone" type="text" name="contact['phone']" value="<%= contact.escape('phone') %>" class="form-control" placeholder="Phone Number">
+            </div>
+            <!-- fax number -->
+            <div class="col-md-6">
+              <input id="contact_fax" type="text" name="contact['fax']" value="<%= contact.escape('fax') %>" class="form-control" placeholder="Fax Number">
+            </div>
+          </div>
         </div>
 
-        <!-- First name -->
+        <!-- email -->
         <div class="form-group">
-          <label for="contact_firstname">First Name</label>
-          <input id="contact_firstname" type="text" name="contact['firstname']" value="<%= contact.escape('firstname') %>" class="form-control">
+          <div class="row">
+            <div class="col-md-12">
+              <input id="contact_email" type="email" name="contact['email']" value="<%= contact.escape('email') %>" class="form-control" placeholder="Email">
+            </div>
+          </div>
+        </div>
+        <!-- end of Contact Info -->
+
+
+        <!-- Company Info -->
+        <div class="form-group">
+          <label for="contact_company">Company Info</label>
+          <div class="row">
+            <div class="col-md-6">
+              <input id="contact_company" type="text" name="contact['company']" value="<%= contact.escape('company') %>" class="form-control" placeholder="Company Name">
+            </div>
+            <div class="col-md-6">
+              <input id="contact_web" type="text" name="contact['web']" value="<%= contact.escape('web') %>" class="form-control" placeholder="Website">
+            </div>
+          </div>
+        </div>
+        <!-- end of Company Info -->
+
+        <!-- Address Info -->
+        <div class="form-group">
+          <label for="contact_address">Address Info</label>
+          <div class="row">
+            <div class="col-md-12">
+              <input id="contact_address" type="text" name="contact['address']" value="<%= contact.escape('address') %>" class="form-control" placeholder="Street">
+            </div>
+          </div>
         </div>
 
-        <!-- Last name -->
+        <!-- remaining of the address fields -->
         <div class="form-group">
-          <label for="contact_lastname">Last Name</label>
-          <input id="contact_lastname" type="text" name="contact['lastname']" value="<%= contact.escape('lastname') %>" class="form-control">
+          <div class="row">
+            <!-- city -->
+            <div class="col-md-3">
+              <input id="contact_city" type="text" name="contact['city']" value="<%= contact.escape('city') %>" class="form-control" placeholder="City">
+            </div>
+            <!-- county -->
+            <div class="col-md-3">
+              <input id="contact_county" type="text" name="contact['county']" value="<%= contact.escape('county') %>" class="form-control" placeholder="County">
+            </div>
+            <!-- state -->
+            <div class="col-md-3">
+              <input id="contact_state" type="text" name="contact['state']" value="<%= contact.escape('state') %>" class="form-control" placeholder="State">
+            </div>
+            <!-- zip -->
+            <div class="col-md-3">
+              <input id="contact_zip" type="text" name="contact['zip']" value="<%= contact.escape('zip') %>" class="form-control" placeholder="Zipcode">
+            </div>
+          </div>
         </div>
+        <!-- end of Address Info -->
 
-        <!-- Address -->
-        <div class="form-group">
-          <label for="contact_address">Address</label>
-          <input id="contact_address" type="text" name="contact['address']" value="<%= contact.escape('address') %>" class="form-control">
-        </div>
-
-        <!-- City -->
-        <div class="form-group">
-          <label for="contact_city">City</label>
-          <input id="contact_city" type="text" name="contact['city']" value="<%= contact.escape('city') %>" class="form-control">
-        </div>
-
-        <!-- County -->
-        <div class="form-group">
-          <label for="contact_County">County</label>
-          <input id="contact_County" type="text" name="contact['County']" value="<%= contact.escape('County') %>" class="form-control">
-        </div>
-
-        <!-- State -->
-        <div class="form-group">
-          <label for="contact_state">State</label>
-          <input id="contact_state" type="text" name="contact['state']" value="<%= contact.escape('state') %>" class="form-control">
-        </div>
-
-        <!-- Zip -->
-        <div class="form-group">
-          <label for="contact_zip">Zip Code</label>
-          <input id="contact_zip" type="text" name="contact['zip']" value="<%= contact.escape('zip') %>" class="form-control">
-        </div>
-
-        <!-- Phone -->
-        <div class="form-group">
-          <label for="contact_phone">Phone</label>
-          <input id="contact_phone" type="text" name="contact['phone']" value="<%= contact.escape('phone') %>" class="form-control">
-        </div>
-
-        <!-- Fax -->
-        <div class="form-group">
-          <label for="contact_fax">Fax</label>
-          <input id="contact_fax" type="text" name="contact['fax']" value="<%= contact.escape('fax') %>" class="form-control">
-        </div>
-
-        <!-- Email -->
-        <div class="form-group">
-          <label for="contact_email">Email</label>
-          <input id="contact_email" type="email" name="contact['email']" value="<%= contact.escape('email') %>" class="form-control">
-        </div>
-
-        <!-- Web -->
-        <div class="form-group">
-          <label for="contact_web">Website</label>
-          <input id="contact_web" type="text" name="contact['web']" value="<%= contact.escape('web') %>" class="form-control">
-        </div>
 
       </form>
     </div>

@@ -19,6 +19,7 @@ AlgoliaImpression.Views.ContactsSearch = Backbone.View.extend({
       // set collection content to the new result based on input
       // have to use set instead of reset in order to trigger 'add remove' for markers
       this.collection.set(content.hits);
+      debugger
     }.bind(this))
   }
 });

@@ -20,16 +20,37 @@ html, body, #content {
   top: 0;
   left: 0;
   overflow: auto;
-  padding: 5px;
+  // padding: 5px;
 
-  .logo {
-    text-align: center;
+  .sidebar-left-header {
+
+    nav.navbar.navbar-fixed-top {
+      width: 25%;
+      min-width: 270px;
+
+      ul.navbar-right {
+        margin-right: 0;
+      }
+    }
+    .logo {
+      text-align: center;
+    }
+
+    .contacts-search {
+      padding-top: 70px;
+      margin-bottom: 20px;
+
+      input.contacts-search-box {
+        border-radius: 0;
+      }
+    }
   }
 
-  .contacts-search {
-    margin-bottom: 20px;
+  div.panel-body {
+    padding: 0;
   }
 }
+
 
 .map {
   position: absolute;
@@ -37,6 +58,7 @@ html, body, #content {
   right: 0;
   width: 75%;
   height: 100%;
+  z-index: 1035; // It's not OVER 9000!!! :(
 
   #map-canvas {
     height: 100%;

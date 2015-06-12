@@ -3,7 +3,7 @@ AlgoliaImpression.Views.ContactsIndex = Backbone.CompositeView.extend({
   template: JST['contacts/index'],
 
   events: {
-    "click button.new-contact": "populateNewContactView"
+    "click a.new-contact": "populateNewContactView"
   },
 
   initialize: function() {

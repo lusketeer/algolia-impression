@@ -10,7 +10,7 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
   initialize: function(options) {
     // refresh view when collection changes
     // make it more efficient when figure out .reset problem
-    this.listenTo(this.collection, "reset add remove", this.render);
+    this.listenTo(this.collection, "add remove", this.render);
     this.mapView = options.mapView;
   },
 
@@ -24,6 +24,14 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
       });
       this.addSubview(".contacts-list", contactsListItemView);
     }, this)
+
+    this.$("span.contacts-list-count").html(this.collection.size());
+    if (this.collection.size() === 0) {
+      this.$(".panel-container").addClass("panel-warning");
+    } else {
+      this.$(".panel-container").addClass("panel-success");
+    }
+
     return this;
   },
 

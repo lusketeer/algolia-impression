@@ -34,21 +34,43 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
     $(event.currentTarget).find("div").html("Loading...");
     var nextPage = AlgoliaImpression.responseContent.page + 1;
     var query = AlgoliaImpression.responseContent.query;
-    var params = AlgoliaImpression.responseContent.params;
-    AlgoliaImpression.index.search(
-      {
-        page: nextPage,
-        params: params
-      },
-      function(err, content) {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        AlgoliaImpression.responseContent = content;
-        this.collection.add(content.hits);
-      }.bind(this)
-    )
+
+    // When user isn't searching
+    if (query === "") {
+      var params = AlgoliaImpression.responseContent.params;
+      var data = params.split("=")[1].split("%2C").join(",");
+      console.log(data);
+      AlgoliaImpression.index.search(
+        {
+          page: nextPage,
+          insideBoundingBox: data
+        },
+        function(err, content) {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          AlgoliaImpression.responseContent = content;
+          this.collection.add(content.hits);
+        }.bind(this)
+      )
+    } else {
+      // When user is searching
+      AlgoliaImpression.index.search(
+        query,
+        {
+          page: nextPage
+        },
+        function(err, content) {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          AlgoliaImpression.responseContent = content;
+          this.collection.add(content.hits);
+        }.bind(this)
+      )
+    }
   }
 
 

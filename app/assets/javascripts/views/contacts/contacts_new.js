@@ -29,8 +29,10 @@ AlgoliaImpression.Views.ContactsNew = Backbone.View.extend({
     var data = $("form.contact-form").serializeJSON();
     // get geo loc for the address
     this.model.set(data);
-    debugger
     var address = this.model.get("address") + ", " + this.model.get("city") + ", " + this.model.get("state") + ", " + this.model.get("zip")
+    // replace empty space with + before post to utility controller
+    debugger
+    address = address.split(" ").join("+");
     // this.model.add(function() {
     //   if (this.model.get("_geoloc")) {
     //     // Re-center map to newly created contact

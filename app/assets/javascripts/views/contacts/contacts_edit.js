@@ -2,6 +2,10 @@ AlgoliaImpression.Views.ContactsEdit = Backbone.View.extend({
 
   template: JST["contacts/form"],
 
+  events: {
+    "click button.submit": "updateContact"
+  },
+
   initialize: function(options) {
     if (options) {
       this.mapView = options.mapView;
@@ -17,5 +21,10 @@ AlgoliaImpression.Views.ContactsEdit = Backbone.View.extend({
     this.$("button.submit").html("Update Contact");
 
     return this;
+  },
+
+  updateContact: function(event) {
+    event.preventDefault();
+    
   }
 });

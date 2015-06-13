@@ -3,7 +3,8 @@ AlgoliaImpression.Views.ContactsListItem = Backbone.View.extend({
 
   events: {
     "click .contact"      : "goToAddress",
-    "mouseenter .contact" : "bounceOnce"
+    "mouseenter .contact" : "bounceOnce",
+    "click .edit-contact" : "populateEditContactView"
   },
 
   initialize: function(options) {
@@ -17,6 +18,16 @@ AlgoliaImpression.Views.ContactsListItem = Backbone.View.extend({
     this.$el.html(content);
     this.$el.find("a.contact").data("id", this.model.get("objectID"));
     return this;
+  },
+
+  populateEditContactView: function(event) {
+    console.log("it's here");
+    $("#contact_modal").html("");
+    var contactsEditView = new AlgoliaImpression.Views.ContactsEdit({
+      model: this.model,
+      mapView: this.mapView
+    });
+    $("#contact_modal").html(contactsEditView.render().$el);
   },
 
   // Center map at clicked contact's location

@@ -64,7 +64,7 @@ html, body, #content {
             right: 5px;
           }
 
-          .delete-contact {
+          .edit-contact {
             visibility: hidden;
             font-size: 19px;
             position: absolute;
@@ -75,11 +75,11 @@ html, body, #content {
 
           &:hover {
             z-index: 20;
-            .delete-contact {
+            .edit-contact {
               visibility: visible;
 
               &:hover {
-                color: #a94442;
+                color: #333;
               }
             }
           }

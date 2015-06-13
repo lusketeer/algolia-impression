@@ -8,9 +8,14 @@ html, body, #content {
   padding: 0;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 #content > div {
   height: 100%;
 }
+
 
 .sidebar-left {
   width: 25%;

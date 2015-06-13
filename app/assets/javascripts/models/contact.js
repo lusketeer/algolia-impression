@@ -5,8 +5,10 @@ AlgoliaImpression.Models.Contact = Backbone.Model.extend({
       if (err) {
         console.log(err);
         return;
-      } {
-        callback();
+      } else {
+        if (callback) {
+          callback();
+        }
       }
     })
   },
@@ -17,7 +19,22 @@ AlgoliaImpression.Models.Contact = Backbone.Model.extend({
         console.log(err);
         return;
       } else {
-        callback();
+        if (callback) {
+          callback();
+        }
+      }
+    });
+  },
+
+  deleteContact: function(callback) {
+    AlgoliaImpression.index.deleteObject(this.get("objectID"), function(err) {
+      if (err) {
+        console.log(err);
+        return;
+      } else {
+        if (callback) {
+          callback();
+        }
       }
     });
   },

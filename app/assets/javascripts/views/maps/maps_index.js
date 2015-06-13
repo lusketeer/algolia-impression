@@ -91,9 +91,21 @@ AlgoliaImpression.Views.MapsIndex = Backbone.View.extend({
   // Show marker information when clicked
   showMarkerInfo: function(event, marker) {
     var contact = this.collection.findWhere({ objectID: marker.title });
-    var contentTitle = "<strong>" + contact.escape("company") + "</strong>";
-     var contentBody = "<p>Phone: " + contact.escape("phone") + "</p>";
-    var contentString = contentTitle + contentBody;
+    var contentCompany = "<a href='" + contact.escape("web") + "' target='_blank'>" + contact.escape("company") + "</a>";
+    var contentStreet = contact.escape("address");
+    var contentAddressRest = contact.escape("city") + ", " + contact.escape("state") + " " + contact.escape("zip");
+    var contentContact = contact.escape("firstname") + " " + contact.escape("lastname");
+    var contentPhone = "<a href='tel:" + contact.escape("phone") + "'>" + "<span class='glyphicon glyphicon-earphone'></span>" + "</a>";
+    var contentEmail = "<a href='mailto:" + contact.escape("email") + "'>" + "<span class='glyphicon glyphicon-envelope'></span>" + "</a>";
+    var contentString = "<div>" +
+        "<h4>" + contentCompany + "</h4>" +
+        contentStreet + "<br>" +
+        contentAddressRest + "<br>" +
+      "</div>";
+    contentString += "<div>" +
+        "<h5>" + contentContact + "</h5>" +
+        contentPhone + "&nbsp;&nbsp;" + contentEmail +
+      "</div>"
     var infoWindow = new google.maps.InfoWindow({
       content: contentString
     });

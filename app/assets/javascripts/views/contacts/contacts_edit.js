@@ -3,7 +3,8 @@ AlgoliaImpression.Views.ContactsEdit = Backbone.View.extend({
   template: JST["contacts/form"],
 
   events: {
-    "click button.submit": "updateContact"
+    "click button.submit"         : "updateContact",
+    "click button.delete-contact" : "destroyContact"
   },
 
   initialize: function(options) {
@@ -49,6 +50,13 @@ AlgoliaImpression.Views.ContactsEdit = Backbone.View.extend({
         // Re-center map to newly created contact
         mapView._map.panTo(currentContact.get("_geoloc"));
       }
+    });
+  },
+
+  destroyContact: function(event) {
+    event.preventDefault();
+    this.model.deleteContact(function() {
+      console.log("it's deleted");
     });
   }
 });

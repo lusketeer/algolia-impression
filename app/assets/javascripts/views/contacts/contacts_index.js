@@ -18,6 +18,7 @@ AlgoliaImpression.Views.ContactsIndex = Backbone.CompositeView.extend({
     var mapsIndexView = new AlgoliaImpression.Views.MapsIndex({
       collection: this.collection
     });
+    this.mapView = mapsIndexView;
     this.addSubview(".map", mapsIndexView);
     mapsIndexView.initMap();
 
@@ -39,7 +40,9 @@ AlgoliaImpression.Views.ContactsIndex = Backbone.CompositeView.extend({
 
   populateNewContactView: function(event) {
     $("#contact_modal").html("");
-    var contactsNewView = new AlgoliaImpression.Views.ContactsNew();
+    var contactsNewView = new AlgoliaImpression.Views.ContactsNew({
+      mapView: this.mapView
+    });
     this.addSubview("#contact_modal", contactsNewView);
   },
 

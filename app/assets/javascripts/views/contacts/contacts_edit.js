@@ -67,6 +67,7 @@ AlgoliaImpression.Views.ContactsEdit = Backbone.View.extend({
     this.model.deleteContact(function() {
       $("#contact_modal").modal("hide");
       $("body").removeClass("modal-open");
+      Backbone.history.navigate("/", { trigger: true });
       console.log("it's deleted");
     });
   }

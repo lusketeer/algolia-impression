@@ -6,7 +6,7 @@
     <%= stylesheet_link_tag    'application' %>
     <% if Rails.env.production? %>
       <% api_key = "key=AIzaSyD52AI4gcDkYd90dEp-ER93yD2sxtIa7iI" %>
-    <!-- <% else %> -->
+    <% else %>
       <% api_key = '' %>
     <% end %>
     <%= javascript_include_tag 'application' %>

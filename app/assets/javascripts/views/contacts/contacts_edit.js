@@ -25,6 +25,30 @@ AlgoliaImpression.Views.ContactsEdit = Backbone.View.extend({
 
   updateContact: function(event) {
     event.preventDefault();
-    
+    var data = $("form.contact-form").serializeJSON();
+    // get geo loc for the address
+    this.model.set(data);
+    // see if any part of address has changed
+    var addressChanged = this.model.hasChanged("address") || this.model.hasChanged("city") || this.model.hasChanged("county") || this.model.hasChanged("state") || this.model.hasChanged("zip");
+    var currentContact = this.model;
+    if (addressChanged) {
+      var address = this.model.get("address") + ", " + this.model.get("city") + ", " + this.model.get("state") + ", " + this.model.get("zip")
+      address = address.split(" ").join("+");
+      var mapView = this.mapView;
+      $.get("/utility/get_geo?address=" + address, function(data) {
+        currentContact.set({
+          _geoloc: data
+        });
+
+      });
+    }
+    currentContact.editContact(function() {
+      $("#contact_modal").modal("hide");
+      $("body").removeClass("modal-open");
+      if (currentContact.get("_geoloc")) {
+        // Re-center map to newly created contact
+        mapView._map.panTo(currentContact.get("_geoloc"));
+      }
+    });
   }
 });

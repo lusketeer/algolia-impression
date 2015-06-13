@@ -40,6 +40,8 @@ AlgoliaImpression.Views.ContactsNew = Backbone.View.extend({
       });
 
       newContact.addContact(function() {
+        $("#contact_modal").modal("hide");
+        $("body").removeClass("modal-open");
         if (newContact.get("_geoloc")) {
           // Re-center map to newly created contact
           mapView._map.panTo(newContact.get("_geoloc"));

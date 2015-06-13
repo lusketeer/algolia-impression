@@ -72,7 +72,7 @@
           <label for="contact_address">Address Info</label>
           <div class="row">
             <div class="col-md-12">
-              <input id="contact_address" type="text" name="address" value="<%= contact.escape('address') %>" class="form-control" placeholder="Street">
+              <input id="contact_address" type="text" name="address" value="<%= contact.escape('address') %>" class="form-control" placeholder="Street" required>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
           <div class="row">
             <!-- city -->
             <div class="col-md-3">
-              <input id="contact_city" type="text" name="city" value="<%= contact.escape('city') %>" class="form-control" placeholder="City">
+              <input id="contact_city" type="text" name="city" value="<%= contact.escape('city') %>" class="form-control" placeholder="City" required>
             </div>
             <!-- county -->
             <div class="col-md-3">
@@ -90,11 +90,11 @@
             </div>
             <!-- state -->
             <div class="col-md-3">
-              <input id="contact_state" type="text" name="state" value="<%= contact.escape('state') %>" class="form-control" placeholder="State">
+              <input id="contact_state" type="text" name="state" value="<%= contact.escape('state') %>" class="form-control" placeholder="State" required>
             </div>
             <!-- zip -->
             <div class="col-md-3">
-              <input id="contact_zip" type="text" name="zip" value="<%= contact.escape('zip') %>" class="form-control" placeholder="Zipcode">
+              <input id="contact_zip" type="text" name="zip" value="<%= contact.escape('zip') %>" class="form-control" placeholder="Zipcode" required>
             </div>
           </div>
         </div>

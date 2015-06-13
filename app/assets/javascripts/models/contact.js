@@ -1,6 +1,6 @@
 AlgoliaImpression.Models.Contact = Backbone.Model.extend({
 
-  add: function(callback) {
+  addContact: function(callback) {
     AlgoliaImpression.index.addObject(this.attributes, function(err, content) {
       if (err) {
         // Print out errors if there are some

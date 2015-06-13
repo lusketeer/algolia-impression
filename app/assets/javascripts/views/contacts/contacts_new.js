@@ -45,6 +45,6 @@ AlgoliaImpression.Views.ContactsNew = Backbone.View.extend({
           mapView._map.panTo(newContact.get("_geoloc"));
         }
       });
-    };
+    });
   }
 });

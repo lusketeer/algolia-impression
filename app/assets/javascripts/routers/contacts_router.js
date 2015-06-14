@@ -24,7 +24,8 @@ AlgoliaImpression.Routers.Contacts = Backbone.Router.extend({
 
         } else {
           console.log(err);
-          this.collection.set([]);
+          alert("Unable to establish connection with API Server");
+          return;
         }
         var contactsIndexView = new AlgoliaImpression.Views.ContactsIndex({
           collection: this.collection

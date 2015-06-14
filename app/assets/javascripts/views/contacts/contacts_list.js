@@ -20,8 +20,9 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.collection.each(function(contact) {
       var contactsListItemView = new AlgoliaImpression.Views.ContactsListItem({
-        model   : contact,
-        mapView : this.mapView
+        model       : contact,
+        collection  : this.collection,
+        mapView     : this.mapView
       });
       this.addSubview(".contacts-list", contactsListItemView);
     }, this)
@@ -32,6 +33,7 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
   loadAdditionalContacts: function(event) {
     event.preventDefault();
     $(event.currentTarget).find("div").html("Loading...");
+    $("*").css("cursor", "progress");
     var nextPage = AlgoliaImpression.responseContent.page + 1;
     var query = AlgoliaImpression.responseContent.query;
 
@@ -51,6 +53,7 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
           }
           AlgoliaImpression.responseContent = content;
           this.collection.add(content.hits);
+          $("*").css("cursor", "initial");
         }.bind(this)
       )
     } else {
@@ -67,6 +70,7 @@ AlgoliaImpression.Views.ContactsList = Backbone.CompositeView.extend({
           }
           AlgoliaImpression.responseContent = content;
           this.collection.add(content.hits);
+          $("*").css("cursor", "initial");
         }.bind(this)
       )
     }

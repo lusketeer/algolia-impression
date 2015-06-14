@@ -1,6 +1,6 @@
 <div href="javascript:void(0)" class="list-group-item contact hvr-glow">
   <h4 class="list-group-item-heading">
-    <a href="<%= contact.escape('web') %>" target="_blank">
+    <a href="javascript:void(0)" class="contact-title">
       <%= contact.escape("company") %>
     </a>
     <span class="badge contact-followers">
@@ -12,7 +12,7 @@
   </p>
   <p class="list-group-item-text">
     <%= contact.escape("address") %>
-    <%= contact.escape("city") %>, <%= contact.escape("state") %>
+    <%= contact.escape("city") %>, <%= contact.escape("state") %> <%= contact.escape("zip") %>
   </p>
   <a href="javascript:void(0)">
     <span class="glyphicon glyphicon-edit edit-contact" data-toggle="modal" data-target="#contact_modal"></span>

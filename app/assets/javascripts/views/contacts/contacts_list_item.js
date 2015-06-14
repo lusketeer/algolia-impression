@@ -2,9 +2,9 @@ AlgoliaImpression.Views.ContactsListItem = Backbone.View.extend({
   template: JST["contacts/list_item"],
 
   events: {
-    "click .contact"      : "goToAddress",
-    "mouseenter .contact" : "bounceOnce",
-    "click .edit-contact" : "populateEditContactView"
+    "click .contact-title"  : "goToAddress",
+    "mouseenter .contact"   : "bounceOnce",
+    "click .edit-contact"   : "populateEditContactView"
   },
 
   initialize: function(options) {
@@ -34,6 +34,8 @@ AlgoliaImpression.Views.ContactsListItem = Backbone.View.extend({
   goToAddress: function(event) {
     event.preventDefault();
     $("input.contacts-search-box").val("");
+    // Trigger keyup event after setting input box value to company name
+    // $("input.contacts-search-box").val(this.model.escape("company")).trigger("keyup");
     var marker = AlgoliaImpression._markers[this.model.get("objectID")];
     this.mapView._map.panTo(this.model.get("_geoloc"));
     // this.mapView._map.setZoom(15);

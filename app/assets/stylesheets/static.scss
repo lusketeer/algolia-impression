@@ -25,6 +25,8 @@ a:hover {
   top: 0;
   left: 0;
   overflow: auto;
+  box-shadow: 2px 0px 10px -1px rgba(0,0,0,0.5);
+  z-index: 1036;
   // padding: 5px;
 
   .sidebar-left-header {
